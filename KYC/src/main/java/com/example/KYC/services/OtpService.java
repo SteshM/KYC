@@ -1,8 +1,10 @@
 package com.example.KYC.services;
 
+import com.example.KYC.dtos.RequestDto.VerifyOtpDTO;
 import com.example.KYC.models.OtpEntity;
 import com.example.KYC.models.UserEntity;
 import com.example.KYC.utils.OtpGenerator;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,7 +30,7 @@ public class OtpService {
     }
 
 
-    public Boolean verifyOtp(VerifyOtpDTO verifyOtpDTO , long id) {
+    public Boolean verifyOtp(@Valid VerifyOtpDTO verifyOtpDTO , long id) {
         try {
             var otpEntity = dataService.findOtpByUserId(id);
             log.info("OTP Entity Returned:{}", otpEntity);

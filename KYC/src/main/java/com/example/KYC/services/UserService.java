@@ -3,12 +3,19 @@ package com.example.KYC.services;
 
 import com.example.KYC.dtos.RequestDto.*;
 import com.example.KYC.dtos.ResponseDto.ResponseDTO;
+import com.example.KYC.dtos.ResponseDto.UserProfileDTO;
+import com.example.KYC.dtos.ResponseDto.UserTypeResDTO;
 import com.example.KYC.enums.OtpType;
 import com.example.KYC.enums.Status;
+import com.example.KYC.exceptions.SavingException;
 import com.example.KYC.models.OtpEntity;
 import com.example.KYC.models.UserEntity;
 import com.example.KYC.models.UserTypeEntity;
 import com.example.KYC.models.WalletAccEntity;
+import com.example.KYC.security.CustomUserDetails;
+import com.example.KYC.utils.AuditTrail;
+import com.example.KYC.utils.AuthenticatedUser;
+import com.example.KYC.utils.JwtUtil;
 import com.example.KYC.utils.Utilities;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -86,7 +93,7 @@ public class UserService implements UserDetailsService {
 
         }
         var savedUserType = dataService.saveUserType(userType);
-        var userTypeResDTO = modelMapper.map(savedUserType,UserTypeResDTO.class);
+        var userTypeResDTO = modelMapper.map(savedUserType, UserTypeResDTO.class);
         return utilities.successResponse("Saved a userType",userTypeResDTO);
     }
 
