@@ -1,6 +1,7 @@
 package com.example.KYC.services;
 
 import com.example.KYC.dtos.RequestDto.VerifyOtpDTO;
+import com.example.KYC.enums.Status;
 import com.example.KYC.models.OtpEntity;
 import com.example.KYC.models.UserEntity;
 import com.example.KYC.utils.OtpGenerator;
